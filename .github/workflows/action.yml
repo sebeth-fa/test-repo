@@ -11,7 +11,7 @@ jobs:
     - name: After Checkout
       run: |
         cat README.md
-        "test" > test.txt
+        echo "test" > test.txt
         git add .
         git commit -m "commit from action"
         git push origin checkout-action
