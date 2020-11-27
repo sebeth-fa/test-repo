@@ -16,4 +16,4 @@ jobs:
         run: |
           echo "$GITHUB_CONTEXT"
           echo "Just ref"
-          echo "$GITHUB_CONTEXT.ref"
+          echo github.ref
