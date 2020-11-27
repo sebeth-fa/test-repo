@@ -1,0 +1,14 @@
+name: Action on tag
+
+on:
+  push:
+    tags:
+      - "**.*.*"
+    branches: on-tag
+
+jobs:
+  test-tagging:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Got Tagged
+        run: echo "${{ github.context.ref }}
