@@ -12,8 +12,6 @@ jobs:
     steps:
       - name: Got Tagged
         env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
+          GITHUB_CONTEXT: ${{ github.ref }}
         run: |
           echo "$GITHUB_CONTEXT"
-          echo "Just ref"
-          echo github.ref
