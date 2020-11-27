@@ -11,4 +11,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Got Tagged
-        run: echo "${{ github.context.ref }}"
+        run: echo "${{ toJson(github).context.ref }}"
