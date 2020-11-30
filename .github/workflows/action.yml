@@ -17,7 +17,7 @@ jobs:
           echo "$GITHUB_CONTEXT"
           echo "$GITHUB_CONTEXT" | cut -d / -f 3
       - name: Checkout
-          uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.3.4
       - name: After Checkout
         run: |
           cat src/version.js
