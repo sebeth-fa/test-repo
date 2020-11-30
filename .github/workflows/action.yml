@@ -10,19 +10,14 @@ jobs:
   test-tagging:
     runs-on: ubuntu-latest
     steps:
-      - name: Get Tag
-        env:
-          TAG: ${{ github.ref }}
-        run: |
-          echo "$TAG"
-          echo "$TAG" | cut -d / -f 3
-          env
       - name: Checkout
         uses: actions/checkout@v2.3.4
       - name: After Checkout
+        env:
+          TAG: ${{ github.ref }} | cut -d / -f 3
         run: |
           cat src/version.js
-          env
+          echo "$TAG"
           sed -i "s/LP_REACT: '*.*.*'/LP_REACT: '$TAG'/" src/version.js
           git config user.name github-actions
           git config user.email github-actions@github.com
