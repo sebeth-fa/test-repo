@@ -12,16 +12,18 @@ jobs:
     steps:
       - name: Get Tag
         env:
-          GITHUB_CONTEXT: ${{ github.ref }}
+          TAG: ${{ github.ref }}
         run: |
-          echo "$GITHUB_CONTEXT"
-          echo "$GITHUB_CONTEXT" | cut -d / -f 3
+          echo "$TAG"
+          echo "$TAG" | cut -d / -f 3
+          env
       - name: Checkout
         uses: actions/checkout@v2.3.4
       - name: After Checkout
         run: |
           cat src/version.js
-          sed -i "s/LP_REACT: '*.*.*'/LP_REACT: '$GITHUB_CONTEXT'/" src/version.js
+          env
+          sed -i "s/LP_REACT: '*.*.*'/LP_REACT: '$TAG'/" src/version.js
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
