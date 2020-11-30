@@ -14,11 +14,11 @@ jobs:
         uses: actions/checkout@v2.3.4
       - name: After Checkout
         env:
-          TAG: ${{ github.ref | cut -d / -f 3 }}
+          TAG: ${{ github.ref }}
         run: |
           cat src/version.js
-          echo "$TAG"
-          sed -i "s/LP_REACT: '*.*.*'/LP_REACT: '$TAG'/" src/version.js
+          VERSION=$(echo $TAG | cut -d / -f 3)
+          sed -i "s/LP_REACT: '*.*.*'/LP_REACT: '$VERSION'/" src/version.js
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
