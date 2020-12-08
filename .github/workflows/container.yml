@@ -11,11 +11,12 @@ jobs:
         run: |
           node -v
           cat /etc/os-release
-      - name: Step with docker
+      - uses: actions/checkout@v1
+      - name: Run a script
         uses: docker://node:15.3.0-alpine3.10 # Can use docker in individual steps with uses
         with:
-          entrypoint: '/bin/echo' # Uses entrypoint for docker instead of run
-          args: 'Hello World'
+          entrypoint: './script.sh' # Uses entrypoint for docker instead of run
+          args: 'Argument String'
       - name: Log docker node version
         uses: docker://node:15.3.0-alpine3.10
         with:
