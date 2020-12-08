@@ -11,3 +11,14 @@ jobs:
         run: |
           node -v
           cat /etc/os-release
+      - name: Step with docker
+        uses: docker://node:15.3.0-alpine3.10 # Can use docker in individual steps with uses
+        with:
+          entrypoint: '/bin/echo' # Uses entrypoint for docker instead of run
+          args: 'Hello World'
+      - name: Log docker node version
+        uses: docker://node:15.3.0-alpine3.10
+        with:
+          entrypoint: '/usr/local/bin/node' # Pass path to entrypoint
+          args: -v
+
