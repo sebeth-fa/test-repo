@@ -1,0 +1,14 @@
+name: Hello World
+author: Sebeth-fa
+description: Test
+inputs:
+  who-to-greet:
+    description: 'Who to greet'
+    required: true
+    default: Sebs
+outputs:
+  time:
+    description: 'The greeting time'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
